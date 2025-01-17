@@ -2,6 +2,7 @@ export interface TopSheetProps {
   minHeightFactor?: number;
   maxHeightFactor?: number;
   topsheetColor?: string;
+  borderBackgroundColor?: string;
   btnColor?: string;
   btnHeight?: number;
   btnWidth?: number;

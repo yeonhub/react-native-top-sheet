@@ -20,6 +20,7 @@ const TopSheet = ({
   minHeightFactor = TopSheetDefaults.minHeightFactor,
   maxHeightFactor = TopSheetDefaults.maxHeightFactor,
   topsheetColor = TopSheetDefaults.topsheetColor,
+  borderBackgroundColor = TopSheetDefaults.borderBackgroundColor,
   btnColor = TopSheetDefaults.btnColor,
   btnHeight = TopSheetDefaults.btnHeight,
   btnWidth = TopSheetDefaults.btnWidth,
@@ -34,10 +35,7 @@ const TopSheet = ({
   const minSheetHeight = height / minHeightFactor;
   const maxSheetHeight = height / maxHeightFactor;
 
-  const { sheetHeight, context } = useSheetState(
-    minSheetHeight,
-    maxSheetHeight
-  );
+  const { sheetHeight, context } = useSheetState(minSheetHeight);
 
   const { animatedStyles, animatedOpacityShort, animatedOpacityLong } =
     useAnimatedSheetStyles(sheetHeight, minSheetHeight, maxSheetHeight);
@@ -63,7 +61,9 @@ const TopSheet = ({
   };
 
   return (
-    <Animated.View style={[styles.containerOut, animatedStyles]}>
+    <Animated.View
+      style={[animatedStyles, { backgroundColor: borderBackgroundColor }]}
+    >
       <GestureHandlerRootView>
         <GestureDetector gesture={gesture}>
           <Animated.View
