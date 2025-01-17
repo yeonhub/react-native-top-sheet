@@ -7,6 +7,13 @@ A top sheet library for React-Native 🎯
   <img src="./preview2.gif" alt="Preview 2" width="200">
 </div>
 
+### 언어
+
+- <a href="./README.kr.md" style="display: flex; align-items: center; font-size : 18px; font-weight : 800">
+    <img src="./korFlag.png" alt="한국어 버전" width="30" style="margin-right: 5px;" />
+    한국어 버전
+  </a>
+
 ### Dependencies
 
 📢 This library depends on the following two libraries:
@@ -24,7 +31,7 @@ You can install the package using either `npm` or `yarn`:
 npm install @yeonhub/react-native-top-sheet
 ```
 
-### Using npm:
+### Using yarn:
 
 ```sh
 yarn add @yeonhub/react-native-top-sheet

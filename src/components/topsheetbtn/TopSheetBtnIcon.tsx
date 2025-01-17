@@ -18,7 +18,7 @@ const TopSheetBtnIcon: React.FC<TopSheetBtnIconProps> = ({
           width: btnWidth,
         },
       ]}
-    ></View>
+    />
   );
 };
 
