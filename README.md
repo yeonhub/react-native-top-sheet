@@ -2,8 +2,10 @@
 
 A top sheet library for React-Native 🎯
 
-<img src="./preview1.gif" alt="Preview 1" width="200">
-<img src="./preview2.gif" alt="Preview 2" width="200">
+<div style="display: flex; gap: 10px;">
+  <img src="./preview1.gif" alt="Preview 1" width="200">
+  <img src="./preview2.gif" alt="Preview 2" width="200">
+</div>
 
 ### Dependencies
 
