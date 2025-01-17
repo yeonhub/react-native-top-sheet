@@ -4,9 +4,6 @@ const styles = StyleSheet.create({
   container: {
     overflow: 'hidden',
     position: 'relative',
-  },
-  containerOut: {
-    backgroundColor: 'transparent',
   }
 });
 

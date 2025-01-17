@@ -5,6 +5,8 @@ export const TopSheetDefaults = {
   maxHeightFactor: 2,
   // The color of the topsheet
   topsheetColor: 'gray',
+  // The color of the border of the topsheet
+  borderBackgroundColor: 'transparent',
   // The color of the button
   btnColor: 'black',
   // The height of the button
