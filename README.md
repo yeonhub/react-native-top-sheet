@@ -14,9 +14,6 @@ npm install react-native-top-sheet
 ```js
 import { multiply } from 'react-native-top-sheet';
 
-// ...
-
-const result = await multiply(3, 7);
 ```
 
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import { TopSheet } from 'react-native-top-sheet';
 
@@ -13,8 +12,44 @@ export default function App() {
         btnHeight={5}
         btnWidth={50}
         touchableArea={30}
-        TopSheetShortContent={<Text>여기에는 짧은 내용</Text>}
-        TopSheetLongContent={<Text>여기에는 긴 내용이 들어갑니다.</Text>}
+        CollapsedTopSheetContent={
+          <View style={styles.sheetContainer}>
+            <Text style={styles.text}>React Native Top Sheet</Text>
+            <Text style={styles.text}>React Native Top Sheet</Text>
+          </View>
+        }
+        ExpandedTopSheetContent={
+          <View style={styles.sheetContainer}>
+            <View style={styles.sheetItem}>
+              <View style={styles.imgBox} />
+              <Text style={styles.text}>React Native Top Sheet</Text>
+            </View>
+            <View style={styles.sheetItem}>
+              <View style={styles.imgBox} />
+              <Text style={styles.text}>React Native Top Sheet</Text>
+            </View>
+            <View style={styles.sheetItem}>
+              <View style={styles.imgBox} />
+              <Text style={styles.text}>React Native Top Sheet</Text>
+            </View>
+            <View style={styles.sheetItem}>
+              <View style={styles.imgBox} />
+              <Text style={styles.text}>React Native Top Sheet</Text>
+            </View>
+            <View style={styles.sheetItem}>
+              <View style={styles.imgBox} />
+              <Text style={styles.text}>React Native Top Sheet</Text>
+            </View>
+            <View style={styles.sheetItem}>
+              <View style={styles.imgBox} />
+              <Text style={styles.text}>React Native Top Sheet</Text>
+            </View>
+            <View style={styles.sheetItem}>
+              <View style={styles.imgBox} />
+              <Text style={styles.text}>React Native Top Sheet</Text>
+            </View>
+          </View>
+        }
       />
     </View>
   );
@@ -23,6 +58,26 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor : 'tan'
+  },
+  sheetContainer: {
+    padding: 20,
+    flexDirection: 'column',
+  },
+  sheetItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  imgBox: {
+    width: 60,
+    height: 60,
+    backgroundColor: '#727272',
+    borderRadius: 5,
+    marginRight: 10,
+  },
+  text: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: 'black',
   },
 });
