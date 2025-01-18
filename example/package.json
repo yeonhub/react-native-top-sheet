@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@expo/metro-runtime": "~4.0.0",
+    "@yeonhub/react-native-top-sheet": "^1.1.1",
     "expo": "~52.0.25",
     "expo-status-bar": "~2.0.1",
     "react": "18.3.1",
