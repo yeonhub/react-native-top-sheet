@@ -6,7 +6,7 @@ export default function App() {
     <View style={styles.container}>
       <TopSheet
         minHeightFactor={6}
-        maxHeightFactor={1.2}
+        maxHeightFactor={1.1}
         topsheetColor="#f0f0f0"
         borderBackgroundColor="#000"
         btnColor="#000"
