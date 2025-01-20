@@ -88,11 +88,11 @@
     "@types/react": "^18.2.44"
   },
   "peerDependencies": {
+    "expo": "^52.0.0",
     "react": "*",
     "react-native": "*",
     "react-native-gesture-handler": "^2.22.0",
-    "react-native-reanimated": "^3.16.7",
-    "expo": "^52.0.0"
+    "react-native-reanimated": "^3.16.7"
   },
   "workspaces": [
     "example"
