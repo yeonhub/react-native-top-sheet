@@ -1,6 +1,6 @@
 {
   "name": "@yeonhub/react-native-top-sheet",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A top sheet library for React-Native",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
@@ -88,6 +88,7 @@
     "@types/react": "^18.2.44"
   },
   "peerDependencies": {
+    "expo": "^52.0.0",
     "react": "*",
     "react-native": "*",
     "react-native-gesture-handler": "^2.22.0",

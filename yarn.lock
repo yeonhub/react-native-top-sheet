@@ -3861,6 +3861,7 @@ __metadata:
     release-it: ^17.10.0
     typescript: ^5.2.2
   peerDependencies:
+    expo: ^52.0.0
     react: "*"
     react-native: "*"
     react-native-gesture-handler: ^2.22.0
