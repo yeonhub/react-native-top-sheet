@@ -3,8 +3,8 @@
 React-Native용 topsheet 라이브러리 🎯
 
 <div style="display: flex; gap: 10px;">
-  <img src="./preview1.gif" alt="Preview 1" width="200">
-  <img src="./preview2.gif" alt="Preview 2" width="200">
+  <img src="./README.assets/preview1.gif" alt="Preview 1" width="200">
+  <img src="./README.assets/preview2.gif" alt="Preview 2" width="200">
 </div>
 
 ### 의존성
@@ -13,6 +13,13 @@ React-Native용 topsheet 라이브러리 🎯
 
 ![react-native-gesture-handler](https://img.shields.io/npm/v/react-native-gesture-handler/latest?label=react-native-gesture-handler&logo=npm&color=green&style=flat-square)  
 ![react-native-reanimated](https://img.shields.io/npm/v/react-native-reanimated/latest?label=react-native-reanimated&logo=npm&color=blue&style=flat-square)
+
+## 지원
+<div style="display: flex; justify-content: space-between; width :350px; height : 100px">
+  <img src="./README.assets/android.png" width="100px" height = "100px">
+  <img src="./README.assets/iOS.png" width="100px" height = "100px">
+  <img src="./README.assets/expo.png" width="100px" height = "100px">
+</div>
 
 ## 설치
 
@@ -28,6 +35,12 @@ npm install @yeonhub/react-native-top-sheet
 
 ```sh
 yarn add @yeonhub/react-native-top-sheet
+```
+
+### Expo 사용 (Expo 사용자 전용):
+Expo SDK 52를 사용하는 프로젝트에서는 Expo CLI를 통해 라이브러리를 설치할 수 있습니다:
+```sh
+npx expo install @yeonhub/react-native-top-sheet
 ```
 
 ## 기능
