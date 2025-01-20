@@ -3,14 +3,14 @@
 A top sheet library for React-Native 🎯
 
 <div style="display: flex; gap: 10px;">
-  <img src="./preview1.gif" alt="Preview 1" width="200">
-  <img src="./preview2.gif" alt="Preview 2" width="200">
+  <img src="./README.assets/preview1.gif" alt="Preview 1" width="200">
+  <img src="./README.assets/preview2.gif" alt="Preview 2" width="200">
 </div>
 
 ### 언어
 
-- <a href="./README.kr.md" style="display: flex; align-items: center; font-size : 18px; font-weight : 800">
-    <img src="./korFlag.png" alt="한국어 버전" width="30" style="margin-right: 5px;" />
+- <a href="./README.assets/README.kr.md" style="display: flex; align-items: center; font-size : 18px; font-weight : 800">
+    <img src="./README.assets/korFlag.png" alt="한국어 버전" width="30" style="margin-right: 5px;" />
     한국어 버전
   </a>
 
@@ -20,6 +20,13 @@ A top sheet library for React-Native 🎯
 
 ![react-native-gesture-handler](https://img.shields.io/npm/v/react-native-gesture-handler/latest?label=react-native-gesture-handler&logo=npm&color=green&style=flat-square)  
 ![react-native-reanimated](https://img.shields.io/npm/v/react-native-reanimated/latest?label=react-native-reanimated&logo=npm&color=blue&style=flat-square)
+
+## Support
+<div style="display: flex; justify-content: space-between; width :350px; height : 100px">
+  <img src="./README.assets/android.png" width="100px" height = "100px">
+  <img src="./README.assets/iOS.png" width="100px" height = "100px">
+  <img src="./README.assets/expo.png" width="100px" height = "100px">
+</div>
 
 ## Installation
 
@@ -35,6 +42,12 @@ npm install @yeonhub/react-native-top-sheet
 
 ```sh
 yarn add @yeonhub/react-native-top-sheet
+```
+
+### Using Expo (for Expo users):
+For projects using Expo SDK 52, you can install the library via Expo CLI:
+```sh
+npx expo install @yeonhub/react-native-top-sheet
 ```
 
 ## Features
