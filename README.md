@@ -9,7 +9,7 @@ A top sheet library for React-Native 🎯
 
 ### 언어
 
-- <a href="./README.assets/README.kr.md" style="display: flex; align-items: center; font-size : 18px; font-weight : 800">
+- <a href=".//README.kr.md" style="display: flex; align-items: center; font-size : 18px; font-weight : 800">
     <img src="./README.assets/korFlag.png" alt="한국어 버전" width="30" style="margin-right: 5px;" />
     한국어 버전
   </a>
