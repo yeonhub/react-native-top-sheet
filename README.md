@@ -22,6 +22,7 @@ A top sheet library for React-Native 🎯
 ![react-native-reanimated](https://img.shields.io/npm/v/react-native-reanimated/latest?label=react-native-reanimated&logo=npm&color=blue&style=flat-square)
 
 ## Support
+
 <div style="display: flex; justify-content: space-between; width :350px; height : 100px">
   <img src="./README.assets/android.png" width="100px" height = "100px">
   <img src="./README.assets/iOS.png" width="100px" height = "100px">
@@ -45,7 +46,9 @@ yarn add @yeonhub/react-native-top-sheet
 ```
 
 ### Using Expo (for Expo users):
+
 For projects using Expo SDK 52, you can install the library via Expo CLI:
+
 ```sh
 npx expo install @yeonhub/react-native-top-sheet
 ```
@@ -79,12 +82,12 @@ const MyComponent = () => {
       maxHeightFactor={1.5}
       showBtn={true}
       // Other props
-      CollapsedTopSheetContent={
+      CollapsedContent={
         <View>
           <Text>React Native Top Sheet</Text>
         </View>
       }
-      ExpandedTopSheetContent={
+      ExpandedContent={
         <View>
           <Text>React Native Top Sheet</Text>
           {/* Add more items as needed */}
@@ -122,8 +125,8 @@ The following are the default values for the `TopSheet` component, which you can
 | `touchableArea`         | 20                | `number`  | The height of the touchable area for the toggle button.                                                                                                                                                                             |
 | `radius`                | 20                | `number`  | The radius (corner rounding) of the top sheet.                                                                                                                                                                                      |
 | `showBtn`               | `true`            | `boolean` | Whether or not to show the toggle button.                                                                                                                                                                                           |
-| `damping`               | 10                | `number`  | The damping of the spring animation (controls how bouncy it is).                                                                                                                                                                    |
-| `stiffness`             | 400               | `number`  | The stiffness of the spring animation (controls how fast it moves).                                                                                                                                                                 |
+| `damping`               | 10                | `number`  | The damping of the spring animation (controls how bouncy it is). Must be a value between **1 and 100**. Default is 10.                                                                                                              |
+| `stiffness`             | 400               | `number`  | The stiffness of the spring animation (controls how fast it moves). Must be a value between **1 and 500**. Default is 400.                                                                                                          |
 
 You can customize these values by passing them as props to the `TopSheet` component.
 

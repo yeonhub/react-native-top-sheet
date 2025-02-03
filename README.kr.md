@@ -15,6 +15,7 @@ React-Native용 topsheet 라이브러리 🎯
 ![react-native-reanimated](https://img.shields.io/npm/v/react-native-reanimated/latest?label=react-native-reanimated&logo=npm&color=blue&style=flat-square)
 
 ## 지원
+
 <div style="display: flex; justify-content: space-between; width :350px; height : 100px">
   <img src="./README.assets/android.png" width="100px" height = "100px">
   <img src="./README.assets/iOS.png" width="100px" height = "100px">
@@ -38,7 +39,9 @@ yarn add @yeonhub/react-native-top-sheet
 ```
 
 ### Expo 사용 (Expo 사용자 전용):
+
 Expo SDK 52를 사용하는 프로젝트에서는 Expo CLI를 통해 라이브러리를 설치할 수 있습니다:
+
 ```sh
 npx expo install @yeonhub/react-native-top-sheet
 ```
@@ -72,12 +75,12 @@ const MyComponent = () => {
       maxHeightFactor={1.5}
       showBtn={true}
       // 기타 props
-      CollapsedTopSheetContent={
+      CollapsedContent={
         <View>
           <Text>React Native Top Sheet</Text>
         </View>
       }
-      ExpandedTopSheetContent={
+      ExpandedContent={
         <View>
           <Text>React Native Top Sheet</Text>
           {/* 필요시 항목 추가 */}
@@ -104,20 +107,20 @@ const MyComponent = () => {
 
 다음은 `TopSheet` 컴포넌트의 기본값입니다. 이 값들은 `props`로 변경하여 커스터마이징할 수 있습니다.
 
-| **속성**                  | **기본값**   | **타입**  | **설명**                                                                                                                                                                                                                     |
-| ------------------------- | ----------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `minHeightFactor`          | 6           | `number`  | 축소된 상태의 topsheet 높이입니다. 값이 작을수록 더 높은 topsheet가 됩니다. 이 값은 화면 높이를 나누어 최소 높이를 계산하는 데 사용됩니다 (예: `minSheetHeight = height / minHeightFactor`).       |
-| `maxHeightFactor`          | 2           | `number`  | 확장된 상태의 topsheet 높이입니다. 값이 작을수록 더 낮은 topsheet가 됩니다. 이 값은 화면 높이를 나누어 최대 높이를 계산하는 데 사용됩니다 (예: `maxSheetHeight = height / maxHeightFactor`).       |
-| `borderBackgroundColor`    | 'transparent' | `string`  | 테두리 반경으로 인해 생성된 공백을 채울 배경 색상입니다. topsheet 아래의 콘텐츠에 배경 색상이 있다면, 그 배경 색상과 일치하도록 설정하면 공백을 가릴 수 있습니다.                             |
-| `topsheetColor`            | 'gray'      | `string`  | topsheet의 배경 색상입니다.                                                                                                                                                                                                  |
-| `btnColor`                 | 'black'     | `string`  | 확장/축소 버튼의 배경 색상입니다.                                                                                                                                                                                           |
-| `btnHeight`                | 5           | `number`  | 확장/축소 버튼의 높이입니다.                                                                                                                                                                                                 |
-| `btnWidth`                 | 50          | `number`  | 확장/축소 버튼의 너비입니다.                                                                                                                                                                                                |
-| `touchableArea`            | 20          | `number`  | 확장/축소 버튼의 터치 가능한 영역의 높이입니다.                                                                                                                                                                            |
-| `radius`                   | 20          | `number`  | topsheet의 모서리 반경(테두리 반경)입니다.                                                                                                                                                                                    |
-| `showBtn`                  | `true`      | `boolean` | 확장/축소 버튼을 표시할지 여부입니다.                                                                                                                                                                                        |
-| `damping`                  | 10          | `number`  | 스프링 애니메이션의 감쇠 값(얼마나 뚝 떨어지는지)을 설정합니다.                                                                                                                                                           |
-| `stiffness`                | 400         | `number`  | 스프링 애니메이션의 강성 값(얼마나 빠르게 움직이는지)을 설정합니다.                                                                                                                                                       |
+| **속성**                | **기본값**    | **타입**  | **설명**                                                                                                                                                                                     |
+| ----------------------- | ------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `minHeightFactor`       | 6             | `number`  | 축소된 상태의 topsheet 높이입니다. 값이 작을수록 더 높은 topsheet가 됩니다. 이 값은 화면 높이를 나누어 최소 높이를 계산하는 데 사용됩니다 (예: `minSheetHeight = height / minHeightFactor`). |
+| `maxHeightFactor`       | 2             | `number`  | 확장된 상태의 topsheet 높이입니다. 값이 작을수록 더 낮은 topsheet가 됩니다. 이 값은 화면 높이를 나누어 최대 높이를 계산하는 데 사용됩니다 (예: `maxSheetHeight = height / maxHeightFactor`). |
+| `borderBackgroundColor` | 'transparent' | `string`  | 테두리 반경으로 인해 생성된 공백을 채울 배경 색상입니다. topsheet 아래의 콘텐츠에 배경 색상이 있다면, 그 배경 색상과 일치하도록 설정하면 공백을 가릴 수 있습니다.                            |
+| `topsheetColor`         | 'gray'        | `string`  | topsheet의 배경 색상입니다.                                                                                                                                                                  |
+| `btnColor`              | 'black'       | `string`  | 확장/축소 버튼의 배경 색상입니다.                                                                                                                                                            |
+| `btnHeight`             | 5             | `number`  | 확장/축소 버튼의 높이입니다.                                                                                                                                                                 |
+| `btnWidth`              | 50            | `number`  | 확장/축소 버튼의 너비입니다.                                                                                                                                                                 |
+| `touchableArea`         | 20            | `number`  | 확장/축소 버튼의 터치 가능한 영역의 높이입니다.                                                                                                                                              |
+| `radius`                | 20            | `number`  | topsheet의 모서리 반경(테두리 반경)입니다.                                                                                                                                                   |
+| `showBtn`               | `true`        | `boolean` | 확장/축소 버튼을 표시할지 여부입니다.                                                                                                                                                        |
+| `damping`               | 10            | `number`  | 스프링 애니메이션의 감쇠 값(얼마나 뚝 떨어지는지)을 설정합니다. **1과 100 사이의 값**이어야 하며, 기본값은 10입니다.                                                                         |
+| `stiffness`             | 400           | `number`  | 스프링 애니메이션의 강성 값(얼마나 빠르게 움직이는지)을 설정합니다. **1과 500 사이의 값**이어야 하며, 기본값은 400입니다.                                                                    |
 
 이 값들은 `TopSheet` 컴포넌트에 props로 전달하여 커스터마이징할 수 있습니다.
 

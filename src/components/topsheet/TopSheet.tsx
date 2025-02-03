@@ -12,6 +12,7 @@ import TopSheetBtn from '../topsheetbtn/TopSheetBtn';
 import { useSheetState } from '../../state/sheetState';
 import { useAnimatedSheetStyles } from '../../animations/animatedStyles';
 import { useSheetGestures } from '../../gestures/sheetGestures';
+import { clampValue, validateHeightFactors } from '../../utils/validation';
 import styles from './styles';
 
 const { height } = Dimensions.get('window');
@@ -29,11 +30,18 @@ const TopSheet = ({
   showBtn = TopSheetDefaults.showBtn,
   damping = TopSheetDefaults.damping,
   stiffness = TopSheetDefaults.stiffness,
-  CollapsedTopSheetContent,
-  ExpandedTopSheetContent,
+  CollapsedContent,
+  ExpandedContent,
 }: TopSheetProps): JSX.Element => {
-  const minSheetHeight = height / minHeightFactor;
-  const maxSheetHeight = height / maxHeightFactor;
+  const { minFactor, maxFactor } = validateHeightFactors(
+    minHeightFactor,
+    maxHeightFactor
+  );
+  const clampedDamping = clampValue(damping, 'damping');
+  const clampedStiffness = clampValue(stiffness, 'stiffness');
+
+  const minSheetHeight = height / minFactor;
+  const maxSheetHeight = height / maxFactor;
 
   const { sheetHeight, context } = useSheetState(minSheetHeight);
 
@@ -45,16 +53,16 @@ const TopSheet = ({
     context,
     minSheetHeight,
     maxSheetHeight,
-    damping,
-    stiffness
+    clampedDamping,
+    clampedStiffness
   );
 
   const toggleHeight = () => {
     sheetHeight.value = withSpring(
       sheetHeight.value === minSheetHeight ? maxSheetHeight : minSheetHeight,
       {
-        damping,
-        stiffness,
+        damping: clampedDamping,
+        stiffness: clampedStiffness,
         overshootClamping: true,
       }
     );
@@ -78,10 +86,10 @@ const TopSheet = ({
             ]}
           >
             <CollapsedTopSheet animatedOpacityShort={animatedOpacityShort}>
-              {CollapsedTopSheetContent}
+              {CollapsedContent}
             </CollapsedTopSheet>
             <ExpandedTopSheet animatedOpacityLong={animatedOpacityLong}>
-              {ExpandedTopSheetContent}
+              {ExpandedContent}
             </ExpandedTopSheet>
             <TopSheetBtn
               toggleHeight={toggleHeight}

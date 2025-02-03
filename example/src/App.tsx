@@ -6,21 +6,22 @@ export default function App() {
     <View style={styles.container}>
       <TopSheet
         minHeightFactor={6}
-        maxHeightFactor={1.2}
+        maxHeightFactor={3}
         topsheetColor="#f0f0f0"
-        borderBackgroundColor="#000"
         btnColor="#000"
         btnHeight={5}
         btnWidth={50}
         touchableArea={30}
-        CollapsedTopSheetContent={
+        damping={100}
+        stiffness={100}
+        CollapsedContent={
           <View>
-            <Text>CollapsedTopSheetContent</Text>
+            <Text>CollapsedContent</Text>
           </View>
         }
-        ExpandedTopSheetContent={
+        ExpandedContent={
           <View>
-            <Text>ExpandedTopSheetContent</Text>
+            <Text>ExpandedContent</Text>
           </View>
         }
       />
