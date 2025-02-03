@@ -11,6 +11,6 @@ export interface TopSheetProps {
   showBtn?: boolean;
   damping?: number;
   stiffness?: number;
-  CollapsedTopSheetContent?: React.ReactNode;
-  ExpandedTopSheetContent?: React.ReactNode;
+  CollapsedContent?: React.ReactNode;
+  ExpandedContent?: React.ReactNode;
 }
