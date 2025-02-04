@@ -1,9 +1,7 @@
+import React from 'react';
 import { Dimensions } from 'react-native';
 import Animated, { withSpring } from 'react-native-reanimated';
-import {
-  GestureHandlerRootView,
-  GestureDetector,
-} from 'react-native-gesture-handler';
+import { GestureDetector } from 'react-native-gesture-handler';
 import type { TopSheetProps } from './types';
 import { TopSheetDefaults } from './TopSheetDefaults';
 import CollapsedTopSheet from '../collapsedtopsheet/CollapsedTopSheet';
@@ -72,36 +70,34 @@ const TopSheet = ({
     <Animated.View
       style={[animatedStyles, { backgroundColor: borderBackgroundColor }]}
     >
-      <GestureHandlerRootView>
-        <GestureDetector gesture={gesture}>
-          <Animated.View
-            style={[
-              styles.container,
-              {
-                backgroundColor: topsheetColor,
-                borderBottomLeftRadius: radius,
-                borderBottomRightRadius: radius,
-              },
-              animatedStyles,
-            ]}
-          >
-            <CollapsedTopSheet animatedOpacityShort={animatedOpacityShort}>
-              {CollapsedContent}
-            </CollapsedTopSheet>
-            <ExpandedTopSheet animatedOpacityLong={animatedOpacityLong}>
-              {ExpandedContent}
-            </ExpandedTopSheet>
-            <TopSheetBtn
-              toggleHeight={toggleHeight}
-              btnColor={btnColor}
-              btnHeight={btnHeight}
-              btnWidth={btnWidth}
-              touchableArea={touchableArea}
-              showBtn={showBtn}
-            />
-          </Animated.View>
-        </GestureDetector>
-      </GestureHandlerRootView>
+      <GestureDetector gesture={gesture}>
+        <Animated.View
+          style={[
+            styles.container,
+            {
+              backgroundColor: topsheetColor,
+              borderBottomLeftRadius: radius,
+              borderBottomRightRadius: radius,
+            },
+            animatedStyles,
+          ]}
+        >
+          <CollapsedTopSheet animatedOpacityShort={animatedOpacityShort}>
+            {CollapsedContent}
+          </CollapsedTopSheet>
+          <ExpandedTopSheet animatedOpacityLong={animatedOpacityLong}>
+            {ExpandedContent}
+          </ExpandedTopSheet>
+          <TopSheetBtn
+            toggleHeight={toggleHeight}
+            btnColor={btnColor}
+            btnHeight={btnHeight}
+            btnWidth={btnWidth}
+            touchableArea={touchableArea}
+            showBtn={showBtn}
+          />
+        </Animated.View>
+      </GestureDetector>
     </Animated.View>
   );
 };

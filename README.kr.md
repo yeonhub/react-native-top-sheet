@@ -22,29 +22,147 @@ React-Native용 topsheet 라이브러리 🎯
   <img src="./README.assets/expo.png" width="100px" height = "100px">
 </div>
 
-## 설치
+---
 
-다음 방법 중 하나를 사용하여 패키지를 설치할 수 있습니다:
+# 설치 가이드
 
-### npm 사용:
+## React Native CLI 사용자
+
+### 1. 라이브러리 설치
+
+npm 또는 yarn을 사용하여 `@yeonhub/react-native-top-sheet` 패키지를 설치할 수 있습니다.
+
+#### npm 사용:
 
 ```sh
 npm install @yeonhub/react-native-top-sheet
 ```
 
-### yarn 사용:
+#### yarn 사용:
 
 ```sh
 yarn add @yeonhub/react-native-top-sheet
 ```
 
-### Expo 사용 (Expo 사용자 전용):
+### 2. 필수 의존성 설치
 
-Expo SDK 52를 사용하는 프로젝트에서는 Expo CLI를 통해 라이브러리를 설치할 수 있습니다:
+이 라이브러리는 다음과 같은 추가 패키지를 필요로 합니다. 수동으로 설치해야 합니다.
+
+#### npm 사용:
+
+```sh
+npm install react-native-gesture-handler react-native-reanimated
+```
+
+#### yarn 사용:
+
+```sh
+yarn add react-native-gesture-handler react-native-reanimated
+```
+
+### 3. `babel.config.js` 업데이트
+
+`react-native-reanimated`를 사용하려면 `babel.config.js` 파일에 플러그인을 추가해야 합니다.  
+다음 코드를 `plugins` 배열에 추가하세요.
+
+```js
+module.exports = {
+  ...
+  plugins: ['react-native-reanimated/plugin'],
+};
+```
+
+### 4. 루트 컴포넌트를 `GestureHandlerRootView`로 감싸기
+
+제스처 핸들러가 정상적으로 동작하려면 `GestureHandlerRootView`로 최상위 컴포넌트를 감싸야 합니다.
+
+```js
+import React from 'react';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import App from './App'; // 메인 컴포넌트
+
+export default function Main() {
+  return (
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <App />
+    </GestureHandlerRootView>
+  );
+}
+```
+
+---
+
+## Expo 사용자
+
+### 1. 라이브러리 설치
+
+Expo 프로젝트에서 다음 명령어를 실행하여 라이브러리를 설치할 수 있습니다.
 
 ```sh
 npx expo install @yeonhub/react-native-top-sheet
 ```
+
+### 2. Root 컴포넌트를 `GestureHandlerRootView`로 감싸기
+
+React Native CLI와 마찬가지로, `GestureHandlerRootView`를 사용하여 제스처 처리를 올바르게 설정해야 합니다.
+
+```js
+import React from 'react';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import App from './App'; // 메인 컴포넌트
+
+export default function Main() {
+  return (
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <App />
+    </GestureHandlerRootView>
+  );
+}
+```
+
+### 3. 선택 사항: `TopSheet`의 `CollapsedContent` 또는 `ExpandedContent`에서 `ScrollView` 사용하기
+
+`react-native-gesture-handler`의 `ScrollView`를 사용하려면 버전을 확인하세요.
+
+#### **`react-native-gesture-handler` 버전이 2.22.0 이상인 경우:**
+
+```js
+import { ScrollView } from 'react-native-gesture-handler';
+```
+
+#### **`react-native-gesture-handler` 버전이 2.22.0 미만인 경우:**
+이전 버전에서는 `GestureHandlerRootView`와의 호환성 문제가 발생할 수 있습니다. 최신 버전으로 업데이트하세요.
+
+```sh
+npm uninstall react-native-gesture-handler
+npm install react-native-gesture-handler
+```
+
+그 후, `ScrollView`를 정상적으로 사용할 수 있습니다.
+
+```js
+import { ScrollView } from 'react-native-gesture-handler';
+```
+
+---
+
+## 문제 해결 (Troubleshooting)
+
+### 1. **"Invariant Violation: Tried to register two views with the same name RNGestureHandlerRootView" 오류 발생**
+
+이 오류는 `GestureHandlerRootView`가 앱에서 중복으로 사용될 때 발생합니다.
+
+#### 해결 방법:
+
+- **React Native CLI 사용자:**  
+  앱이 이미 `GestureHandlerRootView`로 감싸져 있는지 확인하세요.  
+  중복 감싸기가 있을 경우 불필요한 부분을 제거하세요.
+
+- **Expo 사용자:**  
+  Expo SDK와 `react-native-gesture-handler`의 일부 버전에서는 `GestureHandlerRootView`가 자동으로 적용됩니다.  
+  수동으로 감싸지 않고 기본 설정을 유지하세요.
+
+이 문제를 해결하면 `GestureHandlerRootView`가 한 번만 적용되어 정상적으로 동작합니다.
 
 ## 기능
 
