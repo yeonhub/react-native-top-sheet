@@ -29,29 +29,148 @@ A top sheet library for React-Native 🎯
   <img src="./README.assets/expo.png" width="100px" height = "100px">
 </div>
 
-## Installation
+---
 
-You can install the package using either `npm` or `yarn`:
+# Installation Guide
 
-### Using npm:
+## React Native CLI Users
+
+### 1. Install the Library
+
+You can install the `@yeonhub/react-native-top-sheet` package using either `npm` or `yarn`:
+
+#### Using npm:
 
 ```sh
 npm install @yeonhub/react-native-top-sheet
 ```
 
-### Using yarn:
+#### Using yarn:
 
 ```sh
 yarn add @yeonhub/react-native-top-sheet
 ```
 
-### Using Expo (for Expo users):
+### 2. Install Dependencies
 
-For projects using Expo SDK 52, you can install the library via Expo CLI:
+This library has the following dependencies that you need to install manually:
+
+#### Using npm:
+
+```sh
+npm install react-native-gesture-handler react-native-reanimated
+```
+
+#### Using yarn:
+
+```sh
+yarn add react-native-gesture-handler react-native-reanimated
+```
+
+### 3. Update `babel.config.js`
+
+In order to use `react-native-reanimated`, you need to add the plugin in your `babel.config.js` file. Add the following line to the `plugins` array:
+
+```js
+module.exports = {
+  ...
+  plugins: ['react-native-reanimated/plugin'],
+};
+```
+
+### 4. Wrap the Root Component with `GestureHandlerRootView`
+
+To ensure proper functionality of gesture handlers, wrap your root component (e.g., `App.js` or `App.tsx`) with `GestureHandlerRootView`:
+
+```js
+import React from 'react';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import App from './App'; // Your main component
+
+export default function Main() {
+  return (
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <App />
+    </GestureHandlerRootView>
+  );
+}
+```
+
+---
+
+## Expo Users
+
+### 1. Install the Library
+
+To install the library in an Expo project, use the following command:
 
 ```sh
 npx expo install @yeonhub/react-native-top-sheet
 ```
+
+### 2. Wrap the Root Component with `GestureHandlerRootView`
+
+Similar to the CLI setup, wrap your root component with `GestureHandlerRootView` to ensure proper handling of gestures:
+
+```js
+import React from 'react';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import App from './App'; // Your main component
+
+export default function Main() {
+  return (
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <App />
+    </GestureHandlerRootView>
+  );
+}
+```
+
+### 3. Optional: Using `ScrollView` in `TopSheet CollapsedContent/ExpandedContent`
+
+If you want to use `ScrollView` from `react-native-gesture-handler` within the collapsed or expanded content, you must verify the version of `react-native-gesture-handler`:
+
+#### If your Expo project is using `react-native-gesture-handler` version **2.22.0** or above:
+
+```js
+import { ScrollView } from 'react-native-gesture-handler';
+```
+
+#### If your Expo project is using a version **lower than 2.22.0**, you may face compatibility issues with the built-in `GestureHandlerRootView`. In this case, you should update `react-native-gesture-handler`:
+
+```sh
+npm uninstall react-native-gesture-handler
+npm install react-native-gesture-handler
+```
+
+Then, you can proceed with using `ScrollView` as usual:
+
+```js
+import { ScrollView } from 'react-native-gesture-handler';
+```
+---
+
+## Troubleshooting
+
+### 1. **Invariant Violation: Tried to register two views with the same name `RNGestureHandlerRootView`**
+
+If you encounter the following error:
+
+```
+Invariant Violation: Tried to register two views with the same name `RNGestureHandlerRootView`
+```
+
+This means that `GestureHandlerRootView` is being used more than once in the app, which is not allowed.
+
+#### Solution:
+
+- **For CLI Users:**
+  Check if your app is already wrapping the root component with `GestureHandlerRootView`. If you have already used it in your code, remove any additional wrapping. `react-native-gesture-handler` might be automatically applying this wrapper.
+
+- **For Expo Users:**
+  Expo SDK versions, along with certain versions of `react-native-gesture-handler`, may already automatically wrap the root component with `GestureHandlerRootView`. In this case, remove the manual wrapping of your root component with `GestureHandlerRootView`.
+
+This will resolve the conflict by ensuring that there is only one instance of `GestureHandlerRootView` in the app.
 
 ## Features
 
