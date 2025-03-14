@@ -148,6 +148,7 @@ Then, you can proceed with using `ScrollView` as usual:
 ```js
 import { ScrollView } from 'react-native-gesture-handler';
 ```
+
 ---
 
 ## Troubleshooting
@@ -188,6 +189,8 @@ This will resolve the conflict by ensuring that there is only one instance of `G
 
 7. **Customizable Animation Speed**: Adjust the speed of the top sheet's opening/closing animation for a smoother or faster experience.
 
+8. **Change Callbacks**: Listen to sheet state changes with callbacks for expand, collapse, and general state changes, enabling custom actions triggered by user interactions.
+
 ## Usage
 
 ```js
@@ -200,6 +203,12 @@ const MyComponent = () => {
       minHeightFactor={3}
       maxHeightFactor={1.5}
       showBtn={true}
+      // State change callbacks
+      onExpand={() => console.log('Sheet expanded')}
+      onCollapse={() => console.log('Sheet collapsed')}
+      onChange={(isExpanded) =>
+        console.log(`Sheet is ${isExpanded ? 'expanded' : 'collapsed'}`)
+      }
       // Other props
       CollapsedContent={
         <View>
@@ -232,20 +241,23 @@ See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the 
 
 The following are the default values for the `TopSheet` component, which you can customize:
 
-| **Property**            | **Default Value** | **Type**  | **Description**                                                                                                                                                                                                                     |
-| ----------------------- | ----------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `minHeightFactor`       | 6                 | `number`  | The height of the top sheet when collapsed. Smaller values result in taller sheets. This value divides the screen height to calculate the minimum height of the top sheet (e.g., `minSheetHeight = height / minHeightFactor`).      |
-| `maxHeightFactor`       | 2                 | `number`  | The height of the top sheet when expanded. Smaller values result in shorter sheets. This value divides the screen height to calculate the maximum height of the top sheet (e.g., `maxSheetHeight = height / maxHeightFactor`).      |
-| `borderBackgroundColor` | 'transparent'     | `string`  | The background color that will fill the area created by the border radius. If the content under the top sheet has a background color, set `borderBackgroundColor` to match it so the space created by the border radius is covered. |
-| `topsheetColor`         | 'gray'            | `string`  | The background color of the top sheet.                                                                                                                                                                                              |
-| `btnColor`              | 'black'           | `string`  | The background color of the toggle button.                                                                                                                                                                                          |
-| `btnHeight`             | 5                 | `number`  | The height of the toggle button.                                                                                                                                                                                                    |
-| `btnWidth`              | 50                | `number`  | The width of the toggle button.                                                                                                                                                                                                     |
-| `touchableArea`         | 20                | `number`  | The height of the touchable area for the toggle button.                                                                                                                                                                             |
-| `radius`                | 20                | `number`  | The radius (corner rounding) of the top sheet.                                                                                                                                                                                      |
-| `showBtn`               | `true`            | `boolean` | Whether or not to show the toggle button.                                                                                                                                                                                           |
-| `damping`               | 10                | `number`  | The damping of the spring animation (controls how bouncy it is). Must be a value between **1 and 100**. Default is 10.                                                                                                              |
-| `stiffness`             | 400               | `number`  | The stiffness of the spring animation (controls how fast it moves). Must be a value between **1 and 500**. Default is 400.                                                                                                          |
+| **Property**            | **Default Value** | **Type**   | **Description**                                                                                                                                                                                                                     |
+| ----------------------- | ----------------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `minHeightFactor`       | 6                 | `number`   | The height of the top sheet when collapsed. Smaller values result in taller sheets. This value divides the screen height to calculate the minimum height of the top sheet (e.g., `minSheetHeight = height / minHeightFactor`).      |
+| `maxHeightFactor`       | 2                 | `number`   | The height of the top sheet when expanded. Smaller values result in shorter sheets. This value divides the screen height to calculate the maximum height of the top sheet (e.g., `maxSheetHeight = height / maxHeightFactor`).      |
+| `borderBackgroundColor` | 'transparent'     | `string`   | The background color that will fill the area created by the border radius. If the content under the top sheet has a background color, set `borderBackgroundColor` to match it so the space created by the border radius is covered. |
+| `topsheetColor`         | 'gray'            | `string`   | The background color of the top sheet.                                                                                                                                                                                              |
+| `btnColor`              | 'black'           | `string`   | The background color of the toggle button.                                                                                                                                                                                          |
+| `btnHeight`             | 5                 | `number`   | The height of the toggle button.                                                                                                                                                                                                    |
+| `btnWidth`              | 50                | `number`   | The width of the toggle button.                                                                                                                                                                                                     |
+| `touchableArea`         | 20                | `number`   | The height of the touchable area for the toggle button.                                                                                                                                                                             |
+| `radius`                | 20                | `number`   | The radius (corner rounding) of the top sheet.                                                                                                                                                                                      |
+| `showBtn`               | `true`            | `boolean`  | Whether or not to show the toggle button.                                                                                                                                                                                           |
+| `damping`               | 10                | `number`   | The damping of the spring animation (controls how bouncy it is). Must be a value between **1 and 100**. Default is 10.                                                                                                              |
+| `stiffness`             | 400               | `number`   | The stiffness of the spring animation (controls how fast it moves). Must be a value between **1 and 500**. Default is 400.                                                                                                          |
+| `onExpand`              | `undefined`       | `function` | A callback function that is triggered when the sheet is fully expanded (at bottom position). Useful for triggering actions when the sheet expands.                                                                                  |
+| `onCollapse`            | `undefined`       | `function` | A callback function that is triggered when the sheet is fully collapsed (at top position). Useful for triggering actions when the sheet collapses.                                                                                  |
+| `onChange`              | `undefined`       | `function` | A callback function that receives the current expansion state (`isExpanded`) as a parameter. This is called whenever the sheet transitions between expanded and collapsed states.                                                   |
 
 You can customize these values by passing them as props to the `TopSheet` component.
 
@@ -254,3 +266,7 @@ You can customize these values by passing them as props to the `TopSheet` compon
 MIT
 
 ---
+
+```
+
+```

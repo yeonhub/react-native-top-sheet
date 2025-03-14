@@ -30,6 +30,9 @@ const TopSheet = ({
   stiffness = TopSheetDefaults.stiffness,
   CollapsedContent,
   ExpandedContent,
+  onExpand,
+  onCollapse,
+  onChange,
 }: TopSheetProps): JSX.Element => {
   const { minFactor, maxFactor } = validateHeightFactors(
     minHeightFactor,
@@ -44,7 +47,14 @@ const TopSheet = ({
   const { sheetHeight, context } = useSheetState(minSheetHeight);
 
   const { animatedStyles, animatedOpacityShort, animatedOpacityLong } =
-    useAnimatedSheetStyles(sheetHeight, minSheetHeight, maxSheetHeight);
+    useAnimatedSheetStyles(
+      sheetHeight,
+      minSheetHeight,
+      maxSheetHeight,
+      onChange,
+      onExpand,
+      onCollapse
+    );
 
   const gesture = useSheetGestures(
     sheetHeight,
@@ -56,14 +66,14 @@ const TopSheet = ({
   );
 
   const toggleHeight = () => {
-    sheetHeight.value = withSpring(
-      sheetHeight.value === minSheetHeight ? maxSheetHeight : minSheetHeight,
-      {
-        damping: clampedDamping,
-        stiffness: clampedStiffness,
-        overshootClamping: true,
-      }
-    );
+    const isCurrentlyExpanded = sheetHeight.value <= minSheetHeight + 10;
+    const targetHeight = isCurrentlyExpanded ? maxSheetHeight : minSheetHeight;
+
+    sheetHeight.value = withSpring(targetHeight, {
+      damping: clampedDamping,
+      stiffness: clampedStiffness,
+      overshootClamping: true,
+    });
   };
 
   return (

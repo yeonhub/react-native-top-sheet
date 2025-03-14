@@ -1,9 +1,19 @@
 import { Gesture } from 'react-native-gesture-handler';
-import { withSpring } from 'react-native-reanimated';
+import { withSpring, type SharedValue } from 'react-native-reanimated';
 
+/**
+ * Creates a pan gesture handler for controlling the sheet
+ * @param sheetHeight - Shared value for the sheet height
+ * @param context - Shared value for gesture context
+ * @param minSheetHeight - Minimum allowed height for the sheet
+ * @param maxSheetHeight - Maximum allowed height for the sheet
+ * @param damping - Spring animation damping value
+ * @param stiffness - Spring animation stiffness value
+ * @return A configured pan gesture handler for the sheet
+ */
 export const useSheetGestures = (
-  sheetHeight: any,
-  context: any,
+  sheetHeight: SharedValue<number>,
+  context: SharedValue<{ y: number }>,
   minSheetHeight: number,
   maxSheetHeight: number,
   damping: number,
@@ -21,19 +31,13 @@ export const useSheetGestures = (
       );
     })
     .onEnd((e) => {
-      if (e.velocityY > 0) {
-        sheetHeight.value = withSpring(maxSheetHeight, {
-          damping,
-          stiffness,
-          overshootClamping: true,
-        });
-      } else {
-        sheetHeight.value = withSpring(minSheetHeight, {
-          damping,
-          stiffness,
-          overshootClamping: true,
-        });
-      }
+      const targetHeight = e.velocityY > 0 ? maxSheetHeight : minSheetHeight;
+
+      sheetHeight.value = withSpring(targetHeight, {
+        damping,
+        stiffness,
+        overshootClamping: true,
+      });
     });
 
   return gesture;
