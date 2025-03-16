@@ -1,6 +1,6 @@
 {
   "name": "@yeonhub/react-native-top-sheet",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "A top sheet library for React-Native",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",

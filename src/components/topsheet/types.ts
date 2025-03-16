@@ -13,4 +13,7 @@ export interface TopSheetProps {
   stiffness?: number;
   CollapsedContent?: React.ReactNode;
   ExpandedContent?: React.ReactNode;
+  onExpand?: () => void;
+  onCollapse?: () => void;
+  onChange?: (isExpanded: boolean) => void;
 }
